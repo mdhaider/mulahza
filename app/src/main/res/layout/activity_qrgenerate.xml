@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.bluerocket.mulahza.QRGenerateActivity">
+    tools:context="edu.bluerocket.mulahza.addemp.QRGenerateActivity">
 
 </android.support.constraint.ConstraintLayout>

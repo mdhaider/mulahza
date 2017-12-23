@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".pin.PinActivity" />
-        <activity android:name=".QRGenerateActivity" />
+        <activity android:name=".addemp.QRGenerateActivity" />
 
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"

@@ -24,7 +24,6 @@ import edu.bluerocket.mulahza.R;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
     private FloatingActionLayout fab;
-    //qr code scanner object
     private TextView textViewName;
     private IntentIntegrator qrScan;
 

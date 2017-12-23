@@ -1,4 +1,4 @@
-package edu.bluerocket.mulahza;
+package edu.bluerocket.mulahza.addemp;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -17,8 +17,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,6 +31,8 @@ import java.util.Calendar;
 import java.util.EnumMap;
 import java.util.Map;
 
+import edu.bluerocket.mulahza.R;
+
 public class QRGenerateActivity extends AppCompatActivity {
     private final String tag = "QRCGEN";
     private final int REQUEST_PERMISSION = 0xf0;
@@ -41,9 +41,7 @@ public class QRGenerateActivity extends AppCompatActivity {
     private Snackbar snackbar;
     private Bitmap qrImage;
 
-    private EditText txtQRText;
     private TextView txtSaveHint;
-    private Button btnGenerate, btnReset;
     private ImageView imgResult;
     private ProgressBar loader;
     private String s1,s2;

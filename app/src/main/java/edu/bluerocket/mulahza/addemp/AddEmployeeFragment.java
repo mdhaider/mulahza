@@ -23,7 +23,6 @@ import com.nguyenhoanglam.imagepicker.ui.imagepicker.ImagePicker;
 
 import java.util.ArrayList;
 
-import edu.bluerocket.mulahza.QRGenerateActivity;
 import edu.bluerocket.mulahza.R;
 
 public class AddEmployeeFragment extends Fragment {
