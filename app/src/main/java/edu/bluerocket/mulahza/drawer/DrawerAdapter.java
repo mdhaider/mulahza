@@ -1,4 +1,4 @@
-package edu.bluerocket.mulahza;
+package edu.bluerocket.mulahza.drawer;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;

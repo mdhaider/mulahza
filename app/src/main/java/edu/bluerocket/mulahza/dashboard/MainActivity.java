@@ -1,6 +1,6 @@
-package edu.bluerocket.mulahza;
+package edu.bluerocket.mulahza.dashboard;
 
-import android.app.Fragment;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,18 +12,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.Arrays;
 
+import edu.bluerocket.mulahza.R;
+import edu.bluerocket.mulahza.addemp.AddEmployeeFragment;
+import edu.bluerocket.mulahza.drawer.DrawerAdapter;
+import edu.bluerocket.mulahza.drawer.DrawerItem;
+import edu.bluerocket.mulahza.drawer.SimpleItem;
+import edu.bluerocket.mulahza.drawer.SpaceItem;
+
 public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
 
     private static final int POS_DASHBOARD = 0;
-    private static final int POS_ACCOUNT = 1;
-    private static final int POS_MESSAGES = 2;
-    private static final int POS_CART = 3;
+    private static final int POS_NEWEMP = 1;
+    private static final int POS_EMPLIST = 2;
+    private static final int POS_MORE = 3;
     private static final int POS_LOGOUT = 5;
 
     private String[] screenTitles;
@@ -52,9 +60,9 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
                 createItemFor(POS_DASHBOARD).setChecked(true),
-                createItemFor(POS_ACCOUNT),
-                createItemFor(POS_MESSAGES),
-                createItemFor(POS_CART),
+                createItemFor(POS_NEWEMP),
+                createItemFor(POS_EMPLIST),
+                createItemFor(POS_MORE),
                 new SpaceItem(48),
                 createItemFor(POS_LOGOUT)));
         adapter.setListener(this);
@@ -69,24 +77,40 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
     @Override
     public void onItemSelected(int position) {
-        if (position == POS_LOGOUT) {
-            finish();
+
+        switch (position){
+            case POS_DASHBOARD:
+                android.support.v4.app.Fragment dashboardFragment = DashboardFragment.newInstance();
+                showFragment(dashboardFragment);
+                break;
+            case POS_NEWEMP:
+                android.support.v4.app.Fragment selectedScreen = AddEmployeeFragment.newInstance();
+                showFragment(selectedScreen);
+                break;
+            case POS_EMPLIST:
+                Toast.makeText(this,"Under Construction",Toast.LENGTH_SHORT).show();
+                break;
+            case POS_MORE:
+                Toast.makeText(this,"Under Construction",Toast.LENGTH_SHORT).show();
+                break;
+            case POS_LOGOUT:
+                finish();
+                break;
         }
         slidingRootNav.closeMenu();
-        Fragment selectedScreen = CenteredTextFragment.createFor(screenTitles[position]);
-        showFragment(selectedScreen);
+
     }
 
-    private void showFragment(Fragment fragment) {
-        getFragmentManager().beginTransaction()
+    private void showFragment(android.support.v4.app.Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
     }
 
     private DrawerItem createItemFor(int position) {
         return new SimpleItem(screenIcons[position], screenTitles[position])
-                .withIconTint(color(R.color.textColorSecondary))
-                .withTextTint(color(R.color.textColorPrimary))
+                .withIconTint(color(R.color.secondary_text))
+                .withTextTint(color(R.color.primary_text))
                 .withSelectedIconTint(color(R.color.colorAccent))
                 .withSelectedTextTint(color(R.color.colorAccent));
     }
@@ -112,4 +136,10 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private int color(@ColorRes int res) {
         return ContextCompat.getColor(this, res);
     }
+
+  @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 }

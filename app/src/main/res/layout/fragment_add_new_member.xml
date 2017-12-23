@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/mainBody"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgResult"
+                    android:layout_width="260dp"
+                    android:layout_height="260dp" />
+
+
+                <ProgressBar
+                    android:id="@+id/loader"
+                    android:visibility="gone"
+                    android:padding="110dp"
+                    android:layout_alignLeft="@+id/imgResult"
+                    android:layout_alignBottom="@+id/imgResult"
+                    android:layout_alignRight="@+id/imgResult"
+                    android:layout_alignTop="@+id/imgResult"
+                    android:indeterminate="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/txtSaveHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:layout_above="@id/loader"
+                android:text="tap the image to save it" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

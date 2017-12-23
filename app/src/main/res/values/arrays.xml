@@ -3,9 +3,9 @@
 
     <string-array name="ld_activityScreenTitles">
         <item>Dashboard</item>
-        <item>My Account</item>
-        <item>Messages</item>
-        <item>Cart</item>
+        <item>Add New</item>
+        <item>Emp List</item>
+        <item>More</item>
         <item />
         <item>Log Out</item>
     </string-array>
