@@ -3,13 +3,16 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "edu.bluerocket.mulahza"
+        applicationId "edu.ehapplab.sidraenterprises"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
     buildTypes {
         release {
@@ -37,4 +40,8 @@ dependencies {
     implementation 'com.github.nguyenhoanglam:ImagePicker:1.2.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
     implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
+    implementation 'com.google.firebase:firebase-firestore:11.8.0'
+    implementation 'com.google.firebase:firebase-storage:11.8.0'
+    implementation 'com.android.support:multidex:1.0.2'
 }
+apply plugin: 'com.google.gms.google-services'

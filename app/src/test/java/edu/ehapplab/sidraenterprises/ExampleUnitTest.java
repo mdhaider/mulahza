@@ -1,4 +1,4 @@
-package edu.bluerocket.mulahza;
+package edu.ehapplab.sidraenterprises;
 
 import org.junit.Test;
 

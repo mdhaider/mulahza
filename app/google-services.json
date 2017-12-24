@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "646802945748",
+    "firebase_url": "https://sidra-enterprises.firebaseio.com",
+    "project_id": "sidra-enterprises",
+    "storage_bucket": "sidra-enterprises.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646802945748:android:dacf7bd3d720d38a",
+        "android_client_info": {
+          "package_name": "edu.ehapplab.sidraenterprises"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646802945748-e80lpfj6ilnvkd43cs76b8iliad924vp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBof3a3wDINSP0Rrg61pVoD3CaKI5RRrco"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

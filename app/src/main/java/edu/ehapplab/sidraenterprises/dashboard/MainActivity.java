@@ -1,4 +1,4 @@
-package edu.bluerocket.mulahza.dashboard;
+package edu.ehapplab.sidraenterprises.dashboard;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -19,12 +19,12 @@ import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.Arrays;
 
-import edu.bluerocket.mulahza.R;
-import edu.bluerocket.mulahza.addemp.AddEmployeeFragment;
-import edu.bluerocket.mulahza.drawer.DrawerAdapter;
-import edu.bluerocket.mulahza.drawer.DrawerItem;
-import edu.bluerocket.mulahza.drawer.SimpleItem;
-import edu.bluerocket.mulahza.drawer.SpaceItem;
+import edu.ehapplab.sidraenterprises.R;
+import edu.ehapplab.sidraenterprises.addemp.AddEmployeeFragment;
+import edu.ehapplab.sidraenterprises.drawer.DrawerAdapter;
+import edu.ehapplab.sidraenterprises.drawer.DrawerItem;
+import edu.ehapplab.sidraenterprises.drawer.SimpleItem;
+import edu.ehapplab.sidraenterprises.drawer.SpaceItem;
 
 public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
 

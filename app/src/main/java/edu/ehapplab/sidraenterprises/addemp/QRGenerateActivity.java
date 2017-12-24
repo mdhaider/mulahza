@@ -1,4 +1,4 @@
-package edu.bluerocket.mulahza.addemp;
+package edu.ehapplab.sidraenterprises.addemp;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -31,7 +31,7 @@ import java.util.Calendar;
 import java.util.EnumMap;
 import java.util.Map;
 
-import edu.bluerocket.mulahza.R;
+import edu.ehapplab.sidraenterprises.R;
 
 public class QRGenerateActivity extends AppCompatActivity {
     private final String tag = "QRCGEN";

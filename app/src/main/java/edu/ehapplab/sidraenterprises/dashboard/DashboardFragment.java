@@ -1,4 +1,4 @@
-package edu.bluerocket.mulahza.dashboard;
+package edu.ehapplab.sidraenterprises.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.robertlevonyan.views.customfloatingactionbutton.FloatingActionLayout;
 
-import edu.bluerocket.mulahza.R;
+import edu.ehapplab.sidraenterprises.R;
 
 
 /**

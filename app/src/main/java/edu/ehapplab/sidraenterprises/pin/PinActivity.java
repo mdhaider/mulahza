@@ -1,4 +1,4 @@
-package edu.bluerocket.mulahza.pin;
+package edu.ehapplab.sidraenterprises.pin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import com.andrognito.pinlockview.IndicatorDots;
 import com.andrognito.pinlockview.PinLockListener;
 import com.andrognito.pinlockview.PinLockView;
 
-import edu.bluerocket.mulahza.dashboard.MainActivity;
-import edu.bluerocket.mulahza.R;
+import edu.ehapplab.sidraenterprises.dashboard.MainActivity;
+import edu.ehapplab.sidraenterprises.R;
 
 public class PinActivity extends AppCompatActivity {
 

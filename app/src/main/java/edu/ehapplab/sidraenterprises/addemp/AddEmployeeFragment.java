@@ -1,4 +1,4 @@
-package edu.bluerocket.mulahza.addemp;
+package edu.ehapplab.sidraenterprises.addemp;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -19,13 +19,19 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.nguyenhoanglam.imagepicker.model.Config;
 import com.nguyenhoanglam.imagepicker.model.Image;
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.ImagePicker;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-import edu.bluerocket.mulahza.R;
+import edu.ehapplab.sidraenterprises.R;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -90,6 +96,31 @@ public class AddEmployeeFragment extends Fragment {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // Access a Cloud Firestore instance from your Activity
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                // Create a new user with a first and last name
+                Map<String, Object> user = new HashMap<>();
+                user.put("first", etName.getText().toString());
+                user.put("last", etPhone.getText().toString());
+              //  user.put("born", 1815);
+
+// Add a new document with a generated ID
+                db.collection("users")
+                        .add(user)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                              //  Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                              //  Log.w(TAG, "Error adding document", e);
+                            }
+                        });
+
                 Bundle b = new Bundle();
                 b.putString("name",etName.getText().toString() );
                 b.putString("phone", etPhone.getText().toString());

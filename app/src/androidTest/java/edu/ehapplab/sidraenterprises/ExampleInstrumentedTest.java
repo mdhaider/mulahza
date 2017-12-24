@@ -1,4 +1,4 @@
-package edu.bluerocket.mulahza;
+package edu.ehapplab.sidraenterprises;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

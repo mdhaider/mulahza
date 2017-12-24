@@ -1,4 +1,4 @@
-package edu.bluerocket.mulahza.addemp;
+package edu.ehapplab.sidraenterprises.addemp;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +14,8 @@ import com.nguyenhoanglam.imagepicker.model.Image;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.bluerocket.mulahza.R;
+import edu.ehapplab.sidraenterprises.R;
+
 
 /**
  * Created by nehal on 12/23/2017.
