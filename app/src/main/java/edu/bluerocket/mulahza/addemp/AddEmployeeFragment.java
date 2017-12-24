@@ -1,21 +1,23 @@
 package edu.bluerocket.mulahza.addemp;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import com.nguyenhoanglam.imagepicker.model.Config;
 import com.nguyenhoanglam.imagepicker.model.Image;
@@ -25,15 +27,18 @@ import java.util.ArrayList;
 
 import edu.bluerocket.mulahza.R;
 
+import static android.app.Activity.RESULT_OK;
+
 public class AddEmployeeFragment extends Fragment {
+    private static final int RESULT_PICK_CONTACT = 8;
     private CheckBox cbAdvance, cbSalary, cbID;
     private TextInputLayout inputAdvance, inputSal;
-    private LinearLayout idContainer;
     private ImageAdapter adapter;
     private ArrayList<Image> images = new ArrayList<>();
     private RecyclerView recyclerView;
-    private Button btnSignUp;
+    private Button btnSignUp,btnPick;
     private EditText etName,etPhone;
+    Intent intent ;
     public AddEmployeeFragment() {
     }
 
@@ -62,11 +67,20 @@ public class AddEmployeeFragment extends Fragment {
         inputSal = view.findViewById(R.id.salEt);
         etName = view.findViewById(R.id.input_name);
         etPhone = view.findViewById(R.id.input_number);
-        idContainer = view.findViewById(R.id.idLL);
         recyclerView = view.findViewById(R.id.recyclerViewImage);
         btnSignUp=view.findViewById(R.id.btn_signup);
-
+        btnPick=view.findViewById(R.id.button1);
         checkBoxStateListener();
+
+        btnPick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+                startActivityForResult(contactPickerIntent, RESULT_PICK_CONTACT);
+            }
+        });
+
 
         adapter = new ImageAdapter(getActivity());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -115,8 +129,6 @@ public class AddEmployeeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (cbID.isChecked()) {
-
-                    //   idContainer.setVisibility(View.VISIBLE);
                     start();
                     recyclerView.setVisibility(View.VISIBLE);
                 } else {
@@ -153,15 +165,52 @@ public class AddEmployeeFragment extends Fragment {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Config.RC_PICK_IMAGES && resultCode == Activity.RESULT_OK && data != null) {
-            images = data.getParcelableArrayListExtra(Config.EXTRA_IMAGES);
-            adapter.setData(images);
+
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case RESULT_PICK_CONTACT:
+                    contactPicked(data);
+                    break;
+                case Config.RC_PICK_IMAGES:
+                    if(data !=null){
+                        images = data.getParcelableArrayListExtra(Config.EXTRA_IMAGES);
+                        adapter.setData(images);
+                    }
+                    break;
+            }
+        } else {
+            Log.e("MainActivity", "Operation Failed");
         }
+
         super.onActivityResult(requestCode, resultCode, data); // THIS METHOD SHOULD BE HERE so that ImagePicker works with fragment
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    private void contactPicked(Intent data) {
+        Cursor cursor = null;
+        try {
+            String phoneNo = null ;
+            String name = null;
+            // getData() method will have the Content Uri of the selected contact
+            Uri uri = data.getData();
+            //Query the content uri
+            cursor = getActivity().getContentResolver().query(uri, null, null, null, null);
+            cursor.moveToFirst();
+            // column index of the phone number
+            int  phoneIndex =cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+            // column index of the contact name
+            int  nameIndex =cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+            phoneNo = cursor.getString(phoneIndex);
+            name = cursor.getString(nameIndex);
+            // Set the value to the textviews
+            etName.setText(name);
+            etPhone.setText(phoneNo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
